@@ -41,7 +41,20 @@ fetch('https://demo5283088.mockable.io/customers')
             let resultTotal = document.querySelector("#resultNumbersClients");
 
             resultTotal.textContent = `Exibindo ${index+1} Clientes`;
-        });
-
-
     });
+});
+
+
+
+async function createUser(){
+
+    if (!window.indexedDB) {
+
+    window.alert("Seu navegador não suporta uma versão estável do IndexedDB. Alguns recursos não estarão disponíveis.");
+   
+    }else{
+
+        
+    }
+
+}
