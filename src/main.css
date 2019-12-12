@@ -1,0 +1,234 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	font-family:'Helvetica', sans-serif;
+}
+
+.header{
+
+	height:80px;
+	background:rgba(0,0,0,0.8);
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+
+.header .logo img{
+
+	width:90px;
+	height:40px;
+}
+
+.container{
+	
+	margin:6%  auto;
+	width:80%;
+	display:flex;
+	flex-wrap:wrap;
+	flex-direction:column;
+}
+
+.container .clients-panel{
+	
+	
+}
+
+.container .clients-panel .panel-header{
+	
+	display:flex;
+	flex-flow: wrap;
+	align-items:center;
+
+}
+
+.container .clients-panel .panel-header img{
+	
+	width:50px;
+	height:50px;
+}
+
+.container .clients-panel .panel-header .label{
+	
+	font-size:28px;
+	text-transform:capitalize;
+	padding-left:22px;
+	color:#000;
+	font-weight:600;
+	letter-spacing:1px;
+
+}
+
+
+.container .clients-panel .panel-header hr{
+	
+	margin-top:29px;
+	width:100%;
+}
+
+
+.container .clients-panel .panel-info{
+	
+	margin-top:30px;
+	display:flex;
+	height:80px;
+	align-items:center;
+	justify-content:space-between;
+	width:95%;
+	
+}
+
+.container .clients-panel .panel-info .info h3{
+	
+	color:rgb(0,0,0,0.7);
+
+}
+
+.container .clients-panel .panel-info .info p{
+
+	margin-top:10px;
+}
+
+.container .clients-panel .panel-info .options{
+	
+	height:40px;
+	width:140px;
+	background:#e58e26;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	border-radius:8px;
+	border:1px solid #e58e29;
+}
+
+.container .clients-panel .panel-info .options a{
+	
+	text-decoration:none;
+	color:#fff;
+	font-size:17px;
+	font-weight:bold;
+
+}
+
+
+.container .clients-panel .panel-body{
+
+	
+	margin-top:50px;
+
+}
+
+.container .clients-panel .panel-body .row{
+	
+	width:90%;
+	border:1px solid #eeee;
+	margin:40px auto;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	flex-wrap: wrap;
+	min-height:120px;
+	max-height:100%;
+	border-radius:1px;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);	
+	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);	;
+	-moz-box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);	;
+}
+
+.container .clients-panel .panel-body .row .user-name {
+
+	width:25%;
+}
+
+.container .clients-panel .panel-body .row .user-info{
+
+	width:25%;
+
+}
+
+.container .clients-panel .panel-body .row .user-name p:nth-child(1n),
+.container .clients-panel .panel-body .row .user-info p:nth-child(1n){
+
+	font-weight:bold;
+}
+
+
+.container .clients-panel .panel-body .row .user-name p:nth-child(2n),
+.container .clients-panel .panel-body .row .user-info p:nth-child(2n){
+
+	margin-top:10px;
+	color:rgb(0,0,0,0.5);
+}
+
+
+.container .clients-panel .panel-body .row .user-status{
+
+	width:25%;
+	display:flex;
+	align-items:center;
+
+}
+
+.container .clients-panel .panel-body .row .user-status .status{
+	
+	content:'';
+	width:15px;
+	height:15px;
+	border-radius:50%;
+
+}
+
+.container .clients-panel .panel-body .row .user-status .status.status-ativo{
+
+	background:green;
+}
+
+.container .clients-panel .panel-body .row .user-status .status.status-inativo{
+	
+	background:red;
+
+}
+
+.container .clients-panel .panel-body .row .user-status .status.status-desativado{
+
+	background:#aaa;
+
+}
+
+.container .clients-panel .panel-body .row .user-status .status.status-aguardando{
+
+	background:#e58e55;
+}
+.container .clients-panel .panel-body .row .user-status span{
+
+	margin-left:9px;
+	font-size:18px;
+	color:rgb(0,0,0,0.6);
+}
+
+.container .clients-panel .panel-body .row .actions .btn{
+
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:47px;
+	border-radius:2px;
+	width:140px;
+	color:#e58e26;
+	background:#fff;
+	border:1px solid #e58e26;
+	font-size:18px;
+	text-transform:capitalize;
+	border-radius:4px;
+}
+
+.container .clients-panel .panel-body .row .actions .btn:hover{
+
+	cursor:pointer;
+	color:#ffff;
+	background:#e58e26;
+	transition:0.3s ease;
+
+}
