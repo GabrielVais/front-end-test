@@ -34,9 +34,14 @@ const generateRow = (data) => {
 fetch('https://demo5283088.mockable.io/customers')
     .then(res => res.json())
     .then(res => {
-        res.data.map(user => {
+        res.data.map((user, index) => {
             let row = document.getElementById('result')
             console.log(user)
             row.insertAdjacentHTML('beforeend',generateRow(user))
-        })
+            let resultTotal = document.querySelector("#resultNumbersClients");
+
+            resultTotal.textContent = `Exibindo ${index+1} Clientes`;
+        });
+
+
     });
