@@ -23,24 +23,21 @@
 
 }
 
-.container .clients-panel .panel-info .options{
+
+.container .clients-panel .panel-info .options a{
+	
 	
 	height:40px;
 	width:140px;
 	background:#e58e26;
 	display:flex;
+	font-size:18px;
 	align-items:center;
 	justify-content:center;
 	border-radius:8px;
 	border:1px solid #e58e29;
-}
-
-.container .clients-panel .panel-info .options a{
-	
 	text-decoration:none;
 	color:#fff;
-	font-size:17px;
-	font-weight:bold;
 
 }
 
@@ -56,9 +53,7 @@
 	
 	padding:20px;
 	border:1px solid #ccc;
-	margin-top:30px;
-	margin-left:auto;
-	margin-right:auto;
+	margin:28px auto;
 	display:flex;
 	justify-content:space-around;
 	align-items:center;
@@ -94,7 +89,7 @@
 .container .clients-panel .panel-body .row .user-name p:nth-child(2n),
 .container .clients-panel .panel-body .row .user-info p:nth-child(2n){
 
-	margin-top:15px;
+	margin-top:5px;
 	font-size:20px;
 	color:rgb(0,0,0,0.5);
 }
@@ -155,7 +150,7 @@
 	width:140px;
 	color:#e58e26;
 	background:#fff;
-	border:1px solid #e58e26;
+	border:1.5px solid #e58e26;
 	font-size:18px;
 	text-transform:capitalize;
 	border-radius:4px;
@@ -174,6 +169,5 @@
 .numbers-clients span{
 
 	font-size:22px;
-	margin-top:10px;
 	color:#010110;
 }

@@ -3,7 +3,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/panel.css">
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="css/register.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -47,21 +47,21 @@
                 </div>
                 <div class="form-input">
                     <div class="select is-block">
-                        <select >
-                            <option>Selecione o Status</option>
+                        <select>
+                            <option value="" disabled selected hidden id="status-hidden">Status</option>
                             <option>With options</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-input actions">
                     <button class="btn btn-active">Criar</button>
-                    <button class="btn">Voltar</button>
+                    <button class="btn" id="btnVoltar">Voltar</button>
                 </div>
             </form>
         </div>
 
     </div>
 </div>
-<script src="./main.js"></script>
+<script src="js/register.js"></script>
 </body>
 </html>

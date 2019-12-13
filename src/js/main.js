@@ -46,15 +46,3 @@ fetch('https://demo5283088.mockable.io/customers')
 
 
 
-async function createUser(){
-
-    if (!window.indexedDB) {
-
-    window.alert("Seu navegador não suporta uma versão estável do IndexedDB. Alguns recursos não estarão disponíveis.");
-   
-    }else{
-
-        
-    }
-
-}
