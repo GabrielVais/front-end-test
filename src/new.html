@@ -32,29 +32,33 @@
             </div>
         </div>
         <div class="panel-body" >
-            <form action="" class="main-form">
+            <form action="" class="main-form" id="formRegister">
                 <div class="form-input">
-                    <input class="input" type="text" placeholder="Nome">
+                    <input class="input" type="text" placeholder="Nome" name="nome">
                 </div>
                 <div class="form-input">
-                    <input class="input" type="text" placeholder="E-mail">
+                    <input class="input" type="text" placeholder="E-mail" name="email">
                 </div>
                 <div class="form-input">
-                    <input class="input" type="text" placeholder="CPF">
+                    <input class="input" type="text" placeholder="CPF" name="cpf">
                 </div>
                 <div class="form-input">
-                    <input class="input" type="text" placeholder="Telefone">
+                    <input class="input" type="text" placeholder="Telefone" name="telefone">
                 </div>
                 <div class="form-input">
                     <div class="select is-block">
-                        <select>
+                        <select name="status">
                             <option value="" disabled selected hidden id="status-hidden">Status</option>
-                            <option>With options</option>
+                            <option value="Ativo">Ativo</option>
+                            <option value="Aguardando">Aguardando ativação</option>
+                            <option value="Inativo">Inativo</option>
+                            <option value="Desativado">Desativado</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-input actions">
-                    <button class="btn btn-active">Criar</button>
+                    <input type="submit" class="btn btn-active"
+                    value="Criar" />
                     <button class="btn" id="btnVoltar">Voltar</button>
                 </div>
             </form>

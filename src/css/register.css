@@ -134,14 +134,16 @@ option[disabled]{
 	color:#e58e26;
 	background:#fff;
 	border:1.5px solid #e58e26;
-	font-size:18px;
+	font-size:22px;
 	text-transform:capitalize;
 	border-radius:4px;
 	cursor:pointer;
+	transition:0,3s ease;
 
 }
 
-.container .clients-panel .panel-body .main-form .form-input.actions .btn.btn-active{
+.container .clients-panel .panel-body .main-form .form-input.actions .btn.btn-active,
+.container .clients-panel .panel-body .main-form .form-input.actions .btn:hover{
 	
 	color:#ffff;
 	background:#e58e26;
