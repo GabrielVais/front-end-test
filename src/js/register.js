@@ -1,3 +1,8 @@
+"use strict";
+window.onload = () =>{
+
+    setup();
+}
 
 document.querySelector("#btnVoltar")
 .addEventListener('click', function(e){
@@ -8,37 +13,36 @@ document.querySelector("#btnVoltar")
 
 });
 
+let formCadastro = document.querySelector("#formRegister");
+
+formCadastro.addEventListener('submit', function(e){
+
+	const btnRegister = document.querySelector(".btn-active");
+
+	e.preventDefault();
+
+	console.log('clicado');
 
 
-async function createUser(){
 
-    if (!window.indexedDB) {
+    var dados = new FormData(formCadastro);
 
-    window.alert("Seu navegador não suporta uma versão estável do IndexedDB. Alguns recursos não estarão disponíveis.");
-   
-    }else{
+    //convertendo para objeto forma antiga
 
-    	let form = document.querySelector('main-form');
+	// dados.forEach(function(value, key){
+	//     user[key] = value;
+	// });
 
-    	let data = new FormData(form);
+	//var user = JSON.stringify(user)
 
-    	var db;
+	//object.fromEntries convertendo formData
+	//para objeto 
+	//2019
 
-		var request = indexedDB.open("DBteste");
+	console.log(Object.fromEntries(dados));
 
-		request.onerror = function(event) {
+	saveIndexedDb(Object.fromEntries(dados), btnRegister);
 
-		  alert("Você não habilitou minha web app para usar IndexedDB?!");
-		
-		};
-		request.onsuccess = function(event) {
+});
 
-		  db = request.result;
-	
-		};
-
-        
-    }
-
-}
 
