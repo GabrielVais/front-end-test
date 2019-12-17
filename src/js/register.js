@@ -13,6 +13,8 @@ document.querySelector("#btnVoltar")
 
 });
 
+document.querySelector("#carregarDb").addEventListener('click', getAllIndexedDb);
+
 let formCadastro = document.querySelector("#formRegister");
 
 formCadastro.addEventListener('submit', function(e){
@@ -22,8 +24,6 @@ formCadastro.addEventListener('submit', function(e){
 	e.preventDefault();
 
 	console.log('clicado');
-
-
 
     var dados = new FormData(formCadastro);
 

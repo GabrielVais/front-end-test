@@ -102,7 +102,7 @@ function getAllIndexedDb() {
   
  
   var user = [];
-  
+
   //Transaction sem especificar o segundo parâmetro significa que o modo é readonly
   var transaction = database.transaction(["user"]);
   var objectStore = transaction.objectStore("user");
@@ -126,9 +126,29 @@ function getAllIndexedDb() {
     }
     
   }
-  
-  
+
 }
+
+// async function getAllIdbx () {
+    
+//     let database = await window.indexedDB.open('users', 1);
+
+//     //Inibindo o segundo parâmetro o método transaction assume que a operação também é readonly
+//     let transaction = database.transaction('contact', 'readonly');
+//     let objectStore = transaction.objectStore('contact');
+
+//     //Operações possíveis: add, put, delete, count, clear, get, getAll, getAllKeys, getKey
+//     let contacts = await objectStore.getAll();
+
+//     console.log("Contatos Retornados => ", contacts);
+
+//     //Exibe os contatos na grid (data table)
+//     renderAll(contacts);
+
+//     database.close();
+
+// }
+
 
 async function searchIndexedDb(term) {
   
@@ -216,3 +236,19 @@ if (database) {
 
 
 
+
+function renderAll(user) {
+   
+    user.forEach(function(item) {
+      
+      let row = document.getElementById('result');
+      
+      row.insertAdjacentHTML('beforeend',generateRow(item, false));
+
+      //Incluindo o id quando usamos indexeddb
+      //var param =  item["id"] ? item["id"] : '';
+        
+      //newCell_4.innerHTML = "<button type='button' onclick='removeContact(this, " + param + ")' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>";
+          });
+    
+}

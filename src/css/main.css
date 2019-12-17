@@ -141,7 +141,6 @@
 }
 
 .container .clients-panel .panel-body .row .actions .btn{
-
 	display:flex;
 	justify-content:center;
 	align-items:center;
@@ -165,9 +164,34 @@
 
 }
 
+.container .clients-panel .show-users{
+
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	margin-top:10px;
+
+}
+
+.container .clients-panel .show-users .btn{
+	
+	height:70px;
+	width:200px;
+	background:#e58e26;
+	display:flex;
+	font-size:18px;
+	align-items:center;
+	justify-content:center;
+	border-radius:6px;
+	border:1px solid #e58e29;
+	color:#fff;
+	cursor:pointer;
+
+}
 
 .numbers-clients span{
 
 	font-size:22px;
 	color:#010110;
 }
+
