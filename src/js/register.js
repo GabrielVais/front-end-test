@@ -13,11 +13,11 @@ document.querySelector("#btnVoltar")
 
 });
 
-document.querySelector("#carregarDb").addEventListener('click', getAllIndexedDb);
+//document.querySelector("#carregarDb").addEventListener('click', getAllIndexedDb);
 
 let formCadastro = document.querySelector("#formRegister");
 
-formCadastro.addEventListener('submit', function(e){
+formCadastro.addEventListener('submit', async function(e){
 
 	const btnRegister = document.querySelector(".btn-active");
 
@@ -41,7 +41,9 @@ formCadastro.addEventListener('submit', function(e){
 
 	console.log(Object.fromEntries(dados));
 
-	saveIndexedDb(Object.fromEntries(dados), btnRegister);
+	await saveIndexedDb(Object.fromEntries(dados), btnRegister);
+
+	window.location.href = `${location.pathname}`;
 
 });
 

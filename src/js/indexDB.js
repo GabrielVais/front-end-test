@@ -40,6 +40,7 @@ function cleanIndexedDb() {
     var transaction = database.transaction(["user"], 'readwrite');
     
     //Objeto
+
     var objectStore = transaction.objectStore("user");
     
     //Requisição
@@ -98,57 +99,36 @@ function saveIndexedDb(userData, button) {
 //Obter todos os contatos salvos.
 //Usando  para obter os contatos
 //Nota: Existe um método chamado getAll que pode ser usado como alternativa ao cursor. O getAll é mais performático
-function getAllIndexedDb() {
+async function getAllIndexedDb() {
   
  
   var user = [];
 
   //Transaction sem especificar o segundo parâmetro significa que o modo é readonly
-  var transaction = database.transaction(["user"]);
-  var objectStore = transaction.objectStore("user");
+  var transaction = await database.transaction(["user"]);
+  var objectStore = await transaction.objectStore("user");
   
   //Abrindo Cursor
   var request = objectStore.openCursor();
   
-  request.onsuccess =function(event) {
+  request.onsuccess = async function(event) {
     
     //cursor recebe o primeiro contato armazenado
     var cursor = event.target.result;
     
     if (cursor) {
-      user.push(cursor.value);
+      await user.push(cursor.value);
       console.log("Cursor Atual => ", cursor.value);
       //próximo contato armazenado
       cursor.continue();
     } else {
       console.info ("Não existem mais usuários para buscar!!!");
-      renderAll(user);
+      await renderAll(user);
     }
     
   }
 
 }
-
-// async function getAllIdbx () {
-    
-//     let database = await window.indexedDB.open('users', 1);
-
-//     //Inibindo o segundo parâmetro o método transaction assume que a operação também é readonly
-//     let transaction = database.transaction('contact', 'readonly');
-//     let objectStore = transaction.objectStore('contact');
-
-//     //Operações possíveis: add, put, delete, count, clear, get, getAll, getAllKeys, getKey
-//     let contacts = await objectStore.getAll();
-
-//     console.log("Contatos Retornados => ", contacts);
-
-//     //Exibe os contatos na grid (data table)
-//     renderAll(contacts);
-
-//     database.close();
-
-// }
-
 
 async function searchIndexedDb(term) {
   
@@ -208,20 +188,30 @@ async function searchIndexedDb(term) {
   
 }
 
-function removeIndexedDb(row, id) {
+function removeIndexedDb(target, id) {
     
   var transaction = database.transaction(["user"], "readwrite");
+  
   var objectStore = transaction.objectStore("user");
  
+  console.log(transaction);
+
   var request = objectStore.delete(id);
-  
+
+  console.log(request);
+
   request.onsuccess = function(event) {
+
       console.log("usuário Removido com Sucesso");
-      var i = row.parentNode.parentNode.rowIndex;
-      console.log("Linha Removida => ", i);
-      document.getElementById("#users").deleteRow(i);
+
+      var element = target.parentNode.parentNode;
+
+      console.log(element)
+
+      console.log("Objeto removido => ", element);
+
+      element.parentNode.removeChild(element);
   }
- 
  
 }
 
