@@ -31,7 +31,10 @@
             </div>
         </div>
         <div class="panel-body" >
-            <form action="" class="main-form" id="formRegister">
+            <form action="" class="main-form" id="formUpdate">
+                 <div class="form-input">
+                    <input class="input" type="hidden" placeholder="id" name="id">
+                </div>
                 <div class="form-input">
                     <input class="input" type="text" placeholder="Nome" name="nome">
                 </div>
@@ -57,14 +60,14 @@
                 </div>
                 <div class="form-input actions">
                     <input type="submit" class="btn btn-active"
-                    value="Criar" />
-                    <button class="btn" id="btnVoltar">Voltar</button>
+                    value="Atualizar"/>
+                    <button class="btn" id="btnVoltarUpdate">Voltar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <script src="js/indexDB.js"></script>
-<script src="js/register.js"></script>
+<script src="js/update.js"></script>
 </body>
 </html>

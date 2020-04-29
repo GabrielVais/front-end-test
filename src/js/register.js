@@ -4,12 +4,11 @@ window.onload = () =>{
     setup();
 }
 
-document.querySelector("#btnVoltar")
-.addEventListener('click', function(e){
+document.querySelector("#btnVoltar").addEventListener('click', function(e){
 
 	  e.preventDefault();
 
-	  window.history.back();
+	  location.href = "./index.html";
 
 });
 

@@ -1,18 +1,39 @@
-"use strict";
+const formUpdate = document.querySelector('#formUpdate');
 
-const btnsEdit = document.querySelectorAll('.btn-edit');
+window.onload = async () =>{
 
-btnsEdit.forEach(btnEdit =>{
+    await setup();
 
-	console.log(btnEdit);
+    setTimeout(() =>{
 
-	btnEdit.addEventListener('click', function(e){
+    getDataUserById();
+
+	}, 300);
+}
 
 
-			console.log(this);
+document.querySelector("#btnVoltarUpdate").addEventListener('click', function(e){
 
-	
+	  e.preventDefault();
 
-	})
+	  location.href = "./index.html";
 
 });
+
+function getDataUserById(){
+
+	const urlParams = new URLSearchParams(window.location.search);
+
+	const user_id = parseInt(urlParams.get('user_id'));
+
+	console.log(user_id);
+
+	searchUserById(user_id, 'formUpdate');
+
+	console.log(document.forms['formUpdate'].elements[0]);
+
+}
+
+
+
+

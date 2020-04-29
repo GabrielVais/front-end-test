@@ -8,7 +8,7 @@ window.onload = () =>{
 
         getAllIndexedDb();
      
-    }, 50);
+    }, 800);
 
     //getDataCustomers();
 }
@@ -46,6 +46,26 @@ const generateRow = (user, fetch = true) => {
     `
 };
 
+
+setTimeout(() =>{
+
+const btnsEdit = document.querySelectorAll('.btn-edit');
+
+btnsEdit.forEach(btnEdit =>{
+
+    console.log(btnEdit);
+
+    btnEdit.addEventListener('click', function(e){
+
+            let id = parseInt(btnEdit.getAttribute('data-id'));
+
+            location.href = `./edit.html?user_id=${id}`;
+
+        })
+
+    });
+
+}, 1000)
 
 function getDataCustomers(){
 

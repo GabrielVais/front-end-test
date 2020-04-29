@@ -1,8 +1,8 @@
-"use strict";
-
 var database = '';
 
 const dbName = "users";
+
+var dataUser = '';
 
 function setup() {
   
@@ -130,62 +130,51 @@ async function getAllIndexedDb() {
 
 }
 
-async function searchIndexedDb(term) {
+
+ async function searchUserById(id, formName = '') {
   
   //Transaction sem especificar o segundo parâmetro significa que o modo é readonly
-  var transaction = database.transaction(["user"]);
-  var objectStore = transaction.objectStore("user");
+  var transaction = await database.transaction(["user"]);
+  var objectStore = await transaction.objectStore("user");
+
+  var searchById =  await objectStore.get(id);
   
-  var index_1 = objectStore.index("nome");
-  var index_2 = objectStore.index("email");
-  
-  var keyRange = IDBKeyRange.only(term);  
-  
-  var contactsByName = [];
-  var contactsByEmail = [];
-  
-  //Abrindo Cursor
-  //Eu poderia usar o método get, mas se tivermos mais de um contato o método vai pegar o de menor chave
-  //Cursor vai retornar todos os contatos localizados
-  var searchByName = index_1.openCursor(keyRange);
-  
-  searchByName.onsuccess = function(event) {
+  searchById.onsuccess = async (event) => {
       
-      var cursor = event.target.result;
+      var cursor = await event.target.result;
+
       if (cursor) {
-          contactsByName.push(cursor.value);            
-          cursor.continue();
-      } else {
-           console.log("Contatos localizados por nome => ", contactsByName);
-           
-           var searchByEmail = index_2.openCursor(keyRange);
-           
-           searchByEmail.onsuccess = function(event) {
-            
-                var cursor = event.target.result;
-                if (cursor) {
-                    contactsByEmail.push(cursor.value);
-                    cursor.continue();
-                } else {
-                  
-                   console.log("Contatos localizados por email => ", contactsByEmail);
-                  
-                   //Transformar array (contendo contactsByName + contactsByEmail) para JSON array
-                   let str = JSON.stringify(contactsByName.concat(contactsByEmail));
-                   
-                   //Retorna os itens únicos. Remove os repetidos.
-                   let user = JSON.parse(str).filter((li, idx, self) => self.map(itm => itm.id).indexOf(li.id) === idx);
-                  
-                    console.info("Contatos localizados => ", user);
-                    renderAll(user);
-                }
-               
-           }
-          
-          //renderAll(users);
-      }
-  }
-  
+ 
+          console.log(cursor);
+
+          document.forms['formUpdate'].elements[0].value = cursor.id;
+
+          document.forms['formUpdate'].elements[1].value = cursor.nome;
+
+          document.forms['formUpdate'].elements[2].value = cursor.email;
+
+          document.forms['formUpdate'].elements[3].value = cursor.cpf;
+
+          document.forms['formUpdate'].elements[4].value = cursor.telefone
+
+          document.forms['formUpdate'].elements[5].value = cursor.status
+
+        }
+
+    }
+
+}
+
+
+function updateById(id){
+
+   if (cursor) {
+      
+      const contact = cursor.value;
+
+      cursor.update(contact);
+
+    }
 }
 
 function removeIndexedDb(target, id) {
@@ -239,6 +228,6 @@ function renderAll(user) {
       //var param =  item["id"] ? item["id"] : '';
         
       //newCell_4.innerHTML = "<button type='button' onclick='removeContact(this, " + param + ")' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>";
-          });
+    });
     
 }
