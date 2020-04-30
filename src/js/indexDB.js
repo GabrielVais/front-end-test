@@ -107,15 +107,13 @@ function saveIndexedDb(userData, button) {
 //Obter todos os contatos salvos.
 //Usando  para obter os contatos
 //Nota: Existe um método chamado getAll que pode ser usado como alternativa ao cursor. O getAll é mais performático
-async function getAllIndexedDb() {
+async function getAllIndexedDb(is_export = false) {
 
   if(!database){
 
-      
-
+    
   }
-  
- 
+
   var user = [];
 
   //Transaction sem especificar o segundo parâmetro significa que o modo é readonly
@@ -135,9 +133,31 @@ async function getAllIndexedDb() {
       console.log("Cursor Atual => ", cursor.value);
       //próximo contato armazenado
       cursor.continue();
+
     } else {
+
+      if(!is_export){
+
       console.info ("Não existem mais usuários para buscar!!!");
       await renderAll(user);
+
+      }else{
+
+        let jsonDatabase = JSON.stringify(user);
+
+        let formBlob = new Blob([jsonDatabase], { type: "application/json" });
+
+        let userLink = document.createElement('a');
+
+        userLink.setAttribute('download',  'database.json');
+
+        userLink.setAttribute('href', window.URL.createObjectURL(formBlob));
+
+        userLink.click();
+
+
+      }
+
     }
     
   }
@@ -191,7 +211,7 @@ async function updateById(id, userData){
   console.log(id);
 
   request.onsuccess = function(e){
-    
+
       userData.id = e.target.result.id;
 
       //var objRequest = cursor.update(item);
@@ -243,11 +263,20 @@ if (database) {
   //Evento genérico para tratar os erros de todos os requests do banco IndexedDB!
   database.onerror = function(event) {
     alert("Erro encontrado: " + event.target.errorCode);
+  
   };
+
 }
 
+function exportDatabase(){
 
+  if(database){
 
+    getAllIndexedDb(true);
+
+  }
+
+}
 
 function renderAll(user) {
    
