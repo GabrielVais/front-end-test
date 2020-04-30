@@ -2,13 +2,8 @@ const formUpdate = document.querySelector('#formUpdate');
 
 window.onload = async () =>{
 
-    await setup();
-
-    setTimeout(() =>{
-
     getDataUserById();
 
-	}, 300);
 }
 
 
@@ -26,7 +21,7 @@ function getDataUserById(){
 
 	const user_id = parseInt(urlParams.get('user_id'));
 
-	console.log(user_id);
+	console.log(user_id.id);
 
 	searchUserById(user_id, 'formUpdate');
 
@@ -35,5 +30,33 @@ function getDataUserById(){
 }
 
 
+formUpdate.addEventListener('submit', async function(e){
 
+	try{
+
+	const btnRegister = document.querySelector(".btn-active");
+
+	e.preventDefault();
+
+	console.log('clicado');
+
+    var dados = new FormData(formUpdate);
+
+	console.log(Object.fromEntries(dados));
+
+	await updateById(parseInt(document.querySelector('#id').value), Object.fromEntries(dados));
+
+	}catch(error){
+
+		console.error(error);
+
+	}finally{
+
+		console.log('teste');
+
+		//returnPage("./index.html", 3000, true);
+	}
+
+
+});
 

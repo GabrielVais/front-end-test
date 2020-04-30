@@ -1,14 +1,11 @@
 "use strict";
 
-window.onload = () =>{
+window.onload = async () =>{
 
-    setup();
 
-    setTimeout( () =>{
+     getAllIndexedDb();
 
-        getAllIndexedDb();
-     
-    }, 800);
+     timer(editUser, 500);
 
     //getDataCustomers();
 }
@@ -46,8 +43,7 @@ const generateRow = (user, fetch = true) => {
     `
 };
 
-
-setTimeout(() =>{
+function editUser(){
 
 const btnsEdit = document.querySelectorAll('.btn-edit');
 
@@ -65,7 +61,7 @@ btnsEdit.forEach(btnEdit =>{
 
     });
 
-}, 1000)
+}
 
 function getDataCustomers(){
 

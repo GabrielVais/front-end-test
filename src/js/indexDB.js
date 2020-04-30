@@ -4,34 +4,42 @@ const dbName = "users";
 
 var dataUser = '';
 
-function setup() {
+setup();
+
+async function setup() {
   
   if(!database) {
 
    	var open = window.indexedDB.open(dbName, 1);
 
-     open.onsuccess = function(event) {
-        database = event.target.result;
+     open.onsuccess = async function(event) {
+
+        database = await event.target.result;
+
+        console.log(database);
+
         console.log("Banco de dados criado com sucesso => "+ database);
      };
            
-     open.onupgradeneeded = function(event) {
+     open.onupgradeneeded = async function(event) {
        
-        var database = event.target.result;
+        var database = await event.target.result;
       
-        var objectStore = database.createObjectStore("user", 
+        var objectStore = await database.createObjectStore("user", 
         	{ keyPath: "id",
         	 autoIncrement : true 
         	});
       
-        objectStore.createIndex("nome", "nome", { unique: false });
+        await objectStore.createIndex("nome", "nome", { unique: false });
       
-        objectStore.createIndex("email", "email", { unique: false });
+        await objectStore.createIndex("email", "email", { unique: false });
         
         
-     }
-  }    
+       }
+    }
+
 }
+
 
 //Responsável por limpar(remover) os objetos armazenados na collection
 function cleanIndexedDb() {
@@ -100,6 +108,12 @@ function saveIndexedDb(userData, button) {
 //Usando  para obter os contatos
 //Nota: Existe um método chamado getAll que pode ser usado como alternativa ao cursor. O getAll é mais performático
 async function getAllIndexedDb() {
+
+  if(!database){
+
+      
+
+  }
   
  
   var user = [];
@@ -166,16 +180,28 @@ async function getAllIndexedDb() {
 }
 
 
-function updateById(id){
+async function updateById(id, userData){
 
-   if (cursor) {
-      
-      const contact = cursor.value;
+  var transaction = await database.transaction(["user"], 'readwrite');
 
-      cursor.update(contact);
+  var objectStore = await transaction.objectStore("user");
+ 
+  var request = objectStore.get(id);
 
+  request.onsuccess = function(e) {
+
+      var objRequest = objectStore.put(userData);
+
+      objRequest.onsuccess = function(e){
+
+          console.log('usuario atualizado com sucesso!');
     }
+
+  }
+
 }
+
+
 
 function removeIndexedDb(target, id) {
     

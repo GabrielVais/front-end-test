@@ -1,8 +1,4 @@
 "use strict";
-window.onload = () =>{
-
-    setup();
-}
 
 document.querySelector("#btnVoltar").addEventListener('click', function(e){
 
@@ -17,6 +13,8 @@ document.querySelector("#btnVoltar").addEventListener('click', function(e){
 let formCadastro = document.querySelector("#formRegister");
 
 formCadastro.addEventListener('submit', async function(e){
+
+	try{
 
 	const btnRegister = document.querySelector(".btn-active");
 
@@ -37,12 +35,21 @@ formCadastro.addEventListener('submit', async function(e){
 	//object.fromEntries convertendo formData
 	//para objeto 
 	//2019
-
 	console.log(Object.fromEntries(dados));
 
 	await saveIndexedDb(Object.fromEntries(dados), btnRegister);
 
-	window.location.href = `${location.pathname}`;
+	}catch(error){
+
+		console.error(error);
+
+	}finally{
+
+		console.log('3eeaea');
+
+		returnPage("./index.html", 3000, true);
+	}
+
 
 });
 

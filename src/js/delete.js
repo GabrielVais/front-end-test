@@ -1,12 +1,15 @@
 "use strict";
 
-setTimeout(() =>{
+
+function deleteUser(){
 
 const btnDelete = document.querySelectorAll('.btn-delete');
 
 btnDelete.forEach(btnDel =>{
 
 		btnDel.addEventListener('click', (e)=>{
+
+			console.log('eaea');
 
 			if(confirm('tem certeza que deseja excluir')){
 
@@ -20,4 +23,6 @@ btnDelete.forEach(btnDel =>{
 
 	});
 
-}, 1000);
+}
+
+timer(deleteUser, 1000);
