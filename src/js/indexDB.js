@@ -161,17 +161,15 @@ async function getAllIndexedDb() {
  
           console.log(cursor);
 
-          document.forms['formUpdate'].elements[0].value = cursor.id;
+          document.forms['formUpdate'].elements[0].value = cursor.nome;
 
-          document.forms['formUpdate'].elements[1].value = cursor.nome;
+          document.forms['formUpdate'].elements[1].value = cursor.email;
 
-          document.forms['formUpdate'].elements[2].value = cursor.email;
+          document.forms['formUpdate'].elements[2].value = cursor.cpf;
 
-          document.forms['formUpdate'].elements[3].value = cursor.cpf;
+          document.forms['formUpdate'].elements[3].value = cursor.telefone
 
-          document.forms['formUpdate'].elements[4].value = cursor.telefone
-
-          document.forms['formUpdate'].elements[5].value = cursor.status
+          document.forms['formUpdate'].elements[4].value = cursor.status
 
         }
 
@@ -188,9 +186,18 @@ async function updateById(id, userData){
  
   var request = objectStore.get(id);
 
-  request.onsuccess = function(e) {
+  console.log(userData);
 
+  console.log(id);
+
+  request.onsuccess = function(e){
+    
+      userData.id = e.target.result.id;
+
+      //var objRequest = cursor.update(item);
       var objRequest = objectStore.put(userData);
+
+      console.log('objRequest', objRequest);
 
       objRequest.onsuccess = function(e){
 

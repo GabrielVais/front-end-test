@@ -4,6 +4,8 @@ window.onload = async () =>{
 
     getDataUserById();
 
+    console.log(getId());
+
 }
 
 
@@ -15,15 +17,21 @@ document.querySelector("#btnVoltarUpdate").addEventListener('click', function(e)
 
 });
 
-function getDataUserById(){
+function getId(){
 
 	const urlParams = new URLSearchParams(window.location.search);
 
 	const user_id = parseInt(urlParams.get('user_id'));
 
-	console.log(user_id.id);
+	return user_id;
 
-	searchUserById(user_id, 'formUpdate');
+}
+
+
+function getDataUserById(){
+
+
+	searchUserById(getId(), 'formUpdate');
 
 	console.log(document.forms['formUpdate'].elements[0]);
 
@@ -44,7 +52,7 @@ formUpdate.addEventListener('submit', async function(e){
 
 	console.log(Object.fromEntries(dados));
 
-	await updateById(parseInt(document.querySelector('#id').value), Object.fromEntries(dados));
+	await updateById(getId(), Object.fromEntries(dados));
 
 	}catch(error){
 
