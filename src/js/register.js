@@ -16,11 +16,71 @@ formCadastro.addEventListener('submit', async function(e){
 
 	try{
 
+	var output = document.querySelector('.output');
+
+	var errors = [];
+
 	const btnRegister = document.querySelector(".btn-active");
 
 	e.preventDefault();
 
 	console.log('clicado');
+
+	//VALIDANDO DADOS
+
+	//validando campo nome
+	if(!validateName(document.forms['formRegister'].elements[0].value) || document.forms['formRegister'].elements[0].value === ''){
+
+
+		errors.push('nome invalido !');
+
+	}
+
+	if(!validateEmail(document.forms['formRegister'].elements[1].value) || document.forms['formRegister'].elements[1].value === ''){
+
+
+		errors.push('email invalido !');
+
+
+	}
+
+
+	if(!validateCpf(document.forms['formRegister'].elements[2].value) || document.forms['formRegister'].elements[1].value === ''){
+
+
+		errors.push('cpf invalido !');
+
+
+	}
+
+
+	if(!validatePhone(document.forms['formRegister'].elements[3].value) || document.forms['formRegister'].elements[1].value === ''){
+
+
+		errors.push('telefone invalido !');
+
+
+	}
+
+	if(document.forms['formRegister'].elements[4].value === ''){
+
+
+		errors.push('status invalido');
+
+
+	}
+
+	if(errors.length > 0){
+		
+		errors.forEach((error, index) =>{
+
+		showAlert(error, 'error', output);
+
+		});
+
+
+	}else{
+
 
     var dados = new FormData(formCadastro);
 
@@ -35,9 +95,17 @@ formCadastro.addEventListener('submit', async function(e){
 	//object.fromEntries convertendo formData
 	//para objeto 
 	//2019
+	
 	console.log(Object.fromEntries(dados));
 
+	
 	await saveIndexedDb(Object.fromEntries(dados), btnRegister);
+
+
+	showAlert('usuário cadastrado com sucesso!', 'success', output);
+
+
+	}
 
 	}catch(error){
 
@@ -45,9 +113,10 @@ formCadastro.addEventListener('submit', async function(e){
 
 	}finally{
 
-		console.log('3eeaea');
+		console.log(output);
 
-		returnPage("./index.html", 3000, true);
+
+		//returnPage("./index.html", 1000, true);
 	}
 
 

@@ -104,6 +104,47 @@ select::-ms-expand {
 
 }
 
+.container .clients-panel .panel-body .main-form .form-input .output{
+	
+	width:300px;
+
+
+}
+
+.container .clients-panel .panel-body 
+.main-form .form-input .output .alert{
+	
+	margin-top:10px;
+	padding:10px;
+	color:#444444;
+	text-align:center;
+	font-size:20px;
+
+}
+
+
+.container .clients-panel .panel-body 
+.main-form .form-input .output .alert.alert-error{
+	
+	background:#f3dfe1;
+
+}
+
+.container .clients-panel .panel-body 
+.main-form .form-input .output .alert.alert-success{
+	
+	background:#edf2de;
+
+}
+
+.container .clients-panel .panel-body
+ .main-form .form-input .output .alert.alert-warning{
+
+	background:#e8f5fa;
+
+}
+
+
 .container .clients-panel .panel-body .main-form .form-input input::placeholder,
 option[disabled]{
 

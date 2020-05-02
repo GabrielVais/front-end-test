@@ -12,10 +12,52 @@ function timer(func, wait){
 }
 
 
-function returnMessage(msg, alertType){
+function showAlert(msg, alertType, output){
 
-       
-       return `<p class='alert alert-${alertType}'>${msg}</p>`;
+     let outputMessage = `<p class='alert alert-${alertType}'>${msg}</p>`;
+
+     output.innerHTML += outputMessage;
+
+     setTimeout(() =>{
+
+     output.innerHTML = '';
+
+     }, 2000)
+
+}
+
+
+function validateEmail(email) {
+    
+    let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    return emailRegex.test(String(email).toLowerCase());
+}
+
+function validateCpf(cpf){
+
+	let cpfRegex = /^\d{3}\d{3}\d{3}\d{2}$/;
+
+	return cpfRegex.test(cpf);
+}
+
+
+function validatePhone(phone){
+
+  let phoneRe = /^[2-9]\d{2}[2-9]\d{2}\d{4}$/;
+  
+  let digits = phone.replace(/\D/g, "");
+ 
+  return phoneRe.test(digits);
+
+}
+
+
+function validateName(name){
+
+  let stringRegex = /^[a-z\s]{0,255}$/i
+
+  return stringRegex.test(name);
 
 }
 
