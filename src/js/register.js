@@ -26,6 +26,10 @@ formCadastro.addEventListener('submit', async function(e){
 
 	console.log('clicado');
 
+
+
+	console.log(document.forms['formRegister'])
+
 	//VALIDANDO DADOS
 
 	//validando campo nome
@@ -54,7 +58,7 @@ formCadastro.addEventListener('submit', async function(e){
 	}
 
 
-	if(!validatePhone(document.forms['formRegister'].elements[3].value) || document.forms['formRegister'].elements[1].value === ''){
+	if(document.forms['formRegister'].elements[1].value === ''){
 
 
 		errors.push('telefone invalido !');
@@ -102,7 +106,10 @@ formCadastro.addEventListener('submit', async function(e){
 	await saveIndexedDb(Object.fromEntries(dados), btnRegister);
 
 
-	showAlert('usuário cadastrado com sucesso!', 'success', output);
+	showAlert(`Usuário ${document.forms['formRegister'].elements[0].value} cadastrado com sucesso!`, 'success', output);
+
+	cleanFileds(document.forms['formRegister']);
+
 
 
 	}

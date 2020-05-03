@@ -80,7 +80,7 @@ formUpdate.addEventListener('submit', async function(e){
 	}
 
 
-	if(!validatePhone(document.forms['formUpdate'].elements[3].value) || document.forms['formUpdate'].elements[1].value === ''){
+	if(document.forms['formUpdate'].elements[1].value === ''){
 
 
 		errors.push('telefone invalido !');

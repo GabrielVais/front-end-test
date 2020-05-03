@@ -42,16 +42,6 @@ function validateCpf(cpf){
 }
 
 
-function validatePhone(phone){
-
-  let phoneRe = /^[2-9]\d{2}[2-9]\d{2}\d{4}$/;
-  
-  let digits = phone.replace(/\D/g, "");
- 
-  return phoneRe.test(digits);
-
-}
-
 
 function validateName(name){
 
@@ -74,6 +64,16 @@ function returnPage(page, wait, timer = false){
 			return location.href = page;
 
 		}, wait)
+
+	}
+
+}
+
+function cleanFileds(fields){
+
+	for(let i=0; i<(fields.length - 2); i++){
+
+		fields.elements[i].value = '';
 
 	}
 
